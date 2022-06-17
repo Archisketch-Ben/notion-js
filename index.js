@@ -28,4 +28,13 @@ async function addItem(text) {
   }
 }
 
-addItem("Yurts in Big Sur, California");
+addItem("test");
+
+/**
+ * 이 데이터베이스의 스키마 속성을 준수하도록 QA 테스트 결과를 반환합니다.
+ *
+ * @param {{}} testCase
+ */
+function getPropertiesFromQATestCase(testCase) {
+  const {} = testCase;
+}
