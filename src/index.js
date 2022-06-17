@@ -1,5 +1,6 @@
-import "./env.js";
+import "./config/env.js";
 import { Client } from "@notionhq/client";
+import "./github-sync.js";
 
 const notion = new Client({ auth: process.env.NOTION_KEY });
 

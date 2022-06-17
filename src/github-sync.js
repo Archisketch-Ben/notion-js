@@ -1,14 +1,14 @@
 import { Client } from "@notionhq/client";
-import dotenv from "dotenv";
+import "./config/env.js";
 import { Octokit } from "octokit";
 import _ from "lodash";
+import { makeConsoleLogger } from "@notionhq/client/build/src/logging.js";
 
 /**
  * DOM Element
  */
-const syncButton = document.getElementById("github-sync-button");
+const syncButton = document.getElementById("notion-github-sync-button");
 
-dotenv.config();
 const octokit = new Octokit({ auth: process.env.GITHUB_KEY });
 const notion = new Client({ auth: process.env.NOTION_KEY });
 
@@ -193,6 +193,7 @@ async function updatePages(pagesToUpdate) {
 }
 
 syncButton.addEventListener("click", (e) => {
+  console.log("dsds");
   startSync();
 });
 
