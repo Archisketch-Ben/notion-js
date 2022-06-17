@@ -12,10 +12,20 @@
     "dotenv": "^16.0.1"
   },
   "scripts": {
+    "format": "prettier --write \"./**/*.+(js|json)\"",
     "clean": "rimraf ./build/",
-    "compile": "node index.js"
+    "compile": "node index.js",
+    "prepare": "husky install"
   },
   "engines": {
     "node": ">=12"
+  },
+  "devDependencies": {
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.2",
+    "prettier": "2.7.1"
+  },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown"
   }
 }
