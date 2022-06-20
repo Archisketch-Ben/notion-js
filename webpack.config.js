@@ -4,8 +4,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-
-const dotenv = require("dotenv").config({ path: __dirname + "/.env" });
+const Dotenv = require("dotenv-webpack");
 
 const banner = require("./src/config/banner");
 const paths = require("./src/config/paths");
@@ -16,7 +15,6 @@ module.exports = function () {
   const isEnvDevelopment = process.env.NODE_ENV === "development";
   const isEnvProduction = process.env.NODE_ENV === "production";
   console.log(process.env);
-  console.log(dotenv);
 
   const plugins = [
     new CleanWebpackPlugin({
@@ -55,9 +53,9 @@ module.exports = function () {
           : undefined
       )
     ),
+    new Dotenv(),
     new webpack.BannerPlugin(banner),
     new webpack.DefinePlugin({
-      "process.env": JSON.stringify(dotenv.parsed),
       NODE_ENV: process.env.NODE_ENV || "development",
     }),
   ];
@@ -85,13 +83,6 @@ module.exports = function () {
         ? "static/js/[name].[contenthash:8].chunk.js"
         : isEnvDevelopment && "static/js/[name].chunk.js",
       assetModuleFilename: "static/media/[name].[hash][ext]",
-    },
-    resolve: {
-      fallback: {
-        fs: false,
-        path: require.resolve("path-browserify"),
-        os: require.resolve("os-browserify/browser"),
-      },
     },
     devServer: {
       port: 9000,

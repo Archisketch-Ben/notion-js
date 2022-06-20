@@ -1,8 +1,6 @@
 import { Client } from "@notionhq/client";
-import "./config/env.js";
 import { Octokit } from "octokit";
 import _ from "lodash";
-import { makeConsoleLogger } from "@notionhq/client/build/src/logging.js";
 
 /**
  * DOM Element

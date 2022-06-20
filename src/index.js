@@ -1,4 +1,3 @@
-import "./config/env.js";
 import { Client } from "@notionhq/client";
 import "./github-sync.js";
 
